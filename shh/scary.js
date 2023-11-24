@@ -7,3 +7,13 @@ audio.addEventListener("canplaythrough", () => {
        }, { once: true })
     })
  });
+
+ var clickCount = 0;
+ document.body.onclick = function()
+ {
+   clickCount++;
+   if (clickCount >= 10)
+   {
+      document.location = '/main/beast';
+   }
+ }
