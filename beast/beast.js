@@ -1,3 +1,11 @@
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
 const beasts = [
     "beast1.png",
     "beast2.png",
@@ -6,6 +14,12 @@ const beasts = [
     "beast5.png",
     "beast6.png"
 ];
+
+beasts.forEach(img => function()
+{
+    preload(img)
+});
+
 const beastimg = document.getElementById('beastimg');
 
 setInterval(function()
