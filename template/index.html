@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Sorter</title>
+        <link rel="icon" href="ralsei.ico">
+        <meta property="og:title" content="funni sorting">
+        <meta property="og:description" content="sortz">
+        <style>
+            body {
+                background-color: black;
+            }
+            button {
+                opacity: 50%;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <button id="button" style="width: 100%; height: 100%;">Click</button>
+            <video id="video" src="Sorting algorithm meme.mp4"></video>
+        </div>
+        <script>
+            var video = document.getElementById("video");
+            var button = document.getElementById("button");
+            button.style.width = video.getClientRects().width + "px";
+            video.addEventListener("canplaythrough", () => {
+                video.play().catch(e => {
+                    window.addEventListener('click', () => {
+                        video.play();
+                        button.remove();
+                    }, { once: true })
+                })
+            });
+            video.onended = function()
+            {
+                document.location = "./home"
+            }
+        </script>
+    </body>
+</html>
