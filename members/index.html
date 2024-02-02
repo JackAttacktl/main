@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Members</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="gumballmachine.ico">
+        <meta property="og:title" content="Gumball Machine | Members">
+        <meta property="og:image" content="https://jackattacktl.github.io/main/home/background.png">
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #000000;
+            }
+
+            li {
+                float: left;
+            }
+
+            li a {
+                border-radius: 10px;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                transition: transform .2s;
+
+            }
+
+            /* Change the link color to #111 (black) on hover */
+            li a:hover {
+                background-color: #111;
+                transform: scale(1.1);
+            }
+
+            body {
+                background-color: black;
+            }
+
+            body {
+                background-color: black;
+            }
+            
+            .member {
+                transition: transform .2s;
+                background-color: black;
+                padding: 1%;
+                border-radius: 5px;
+                outline-style: solid;
+                outline-width: 5px;
+                height: fit-content;
+                width: auto;
+                display: flex;
+                align-items: center;
+                text-decoration:none
+            }
+            .member img {
+                border-radius: 50%;
+            }
+            .member:hover {
+                transform: scale(1.01);
+            }
+            .member div h1 {
+                color: white;
+                padding-left: 50px;
+            }
+            .member div h2 {
+                padding-left: 50px;
+                color: gray;
+            }
+        </style>
+        <script src="listcreator.js"></script>
+    </head>
+    <body onload="load_members()">
+        <ul>
+            <li><a href="/main/home">Home</a></li>
+            <li><a href="/main/members">Members</a></li>
+        </ul>
+    </body>
+</html>
