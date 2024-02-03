@@ -124,7 +124,7 @@ function ragdollspam() {
 }
 
 setInterval(function() {
-    if (Math.random() <= 0.01) {
+    if (Math.random() <= 0.1) {
         if (!ragdollplaying && navigator.userActivation.hasBeenActive && memberobjects.length > 1) {
             ragdollplaying = true;
             ragdollspam();
