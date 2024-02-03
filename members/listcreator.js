@@ -19,11 +19,14 @@ const members = {
     }
 };
 
-const memberobjects = {};
+const memberobjects = [];
+const zindexes = [];
 const music = new Audio("remix.ogg");
+music.currentTime = (sessionStorage.getItem("music_playback") || 0);
 music.loop = true;
-music.volume = 0.5;
+music.volume = 0.1;
 let paused = true;
+let ragdollplaying = false;
 
 function load_members() {
     const membercontainer = document.getElementById("membercontainer");
@@ -44,13 +47,22 @@ function load_members() {
         div.appendChild(h2);
         a.appendChild(div);
         const newelm = membercontainer.appendChild(a);
-        memberobjects.newelm = 0;
+        memberobjects.push(newelm);
+        zindexes.push(newelm);
         newelm.addEventListener("mouseenter", function() {
-            newelm.style.zIndex = memberobjects.newelm + 1
-            memberobjects.newelm++;
+            for (var i = 0; i < zindexes.length; i++) {
+                if (zindexes[i] == newelm) {
+                    zindexes.splice(i,1);
+                    zindexes.push(newelm);
+                    break;
+                }
+            }
+            for (var i = 0; i < zindexes.length; i++) {
+                zindexes[i].style.zIndex = i
+            }
             if (navigator.userActivation.hasBeenActive) {
                 const clickSound = new Audio("click.mp3");
-                clickSound.volume = 0.5;
+                clickSound.volume = 0.1;
                 clickSound.play();
                 clickSound.addEventListener("ended", function() {
                     delete clickSound;
@@ -80,3 +92,42 @@ const intID = setInterval(function() {
         document.getElementById("musicbutton").style.visibility = "visible";
     }
 },0);
+
+window.addEventListener("beforeunload",function() {
+    this.sessionStorage.setItem("music_playback",music.currentTime);
+});
+
+function ragdollspam() {
+    const elm1 = memberobjects[0];
+    const elm2 = memberobjects[1];
+    if (memberobjects.length > 2) {
+        memberobjects[2].style.zIndex = (memberobjects[2].style.zIndex > 1 ? memberobjects[2].style.zIndex : 2)
+    }
+    const spamsound = new Audio("ragdoll spam.mp3");
+    spamsound.volume = 0.2
+    spamsound.oncanplaythrough = function() {
+        spamsound.play();
+        spaminter = setInterval(function() {
+            if (spamsound.ended) {
+                clearInterval(spaminter);
+                ragdollplaying = false;
+            }
+            if (Math.random() <= 0.5) {
+                elm1.style.zIndex = 0
+                elm2.style.zIndex = 1
+            } else {
+                elm1.style.zIndex = 1
+                elm2.style.zIndex = 0
+            }
+        },0);
+    }
+}
+
+setInterval(function() {
+    if (Math.random() <= 0.01) {
+        if (!ragdollplaying && navigator.userActivation.hasBeenActive && memberobjects.length > 1) {
+            ragdollplaying = true;
+            ragdollspam();
+        }
+    }
+},1000);
