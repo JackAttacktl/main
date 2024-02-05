@@ -22,6 +22,7 @@ const members = {
 const memberobjects = [];
 const zindexes = [];
 const music = new Audio("remix.ogg");
+let couldplay = false;
 music.currentTime = (sessionStorage.getItem("music_playback") || 0);
 music.loop = true;
 music.volume = 0.1;
@@ -74,24 +75,29 @@ function load_members() {
         if (paused) {
             music.play();
             paused = false;
-            document.getElementById("musicbutton").innerText = "⏸️";
+            document.getElementById("musicbutton").src = "pause.png";
         }
         else {
             music.pause();
             paused = true;
-            document.getElementById("musicbutton").innerText = "▶️";
+            document.getElementById("musicbutton").src = "play.png";
         }
     });
 }
 
 const intID = setInterval(function() {
-    if (navigator.userActivation.hasBeenActive) {
+    if (navigator.userActivation.hasBeenActive && couldplay) {
         clearInterval(intID);
         music.play();
+        document.getElementById("musicbutton").src = "pause.png";
+        document.getElementById("musicbutton").style = "background-color: white;"
         paused = false;
-        document.getElementById("musicbutton").style.visibility = "visible";
     }
 },0);
+
+music.addEventListener("canplaythrough",function() {
+    couldplay = true;
+});
 
 window.addEventListener("beforeunload",function() {
     this.sessionStorage.setItem("music_playback",music.currentTime);
@@ -124,7 +130,7 @@ function ragdollspam() {
 }
 
 setInterval(function() {
-    if (Math.random() <= 0.1) {
+    if (Math.random() <= 0.05) {
         if (!ragdollplaying && navigator.userActivation.hasBeenActive && memberobjects.length > 1) {
             ragdollplaying = true;
             ragdollspam();

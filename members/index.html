@@ -71,13 +71,13 @@
                 padding-left: 50px;
                 color: gray;
             }
-            button {
-                background-color: transparent; 
+            #musicbutton {
                 background-repeat: no-repeat; 
                 border: none; 
                 cursor: pointer; 
                 overflow: hidden; 
                 outline: none;
+                border-radius: 50%;
             }
         </style>
         <script src="listcreator.js"></script>
@@ -87,7 +87,7 @@
             <li><a href="/main/home">Home</a></li>
             <li><a href="/main/members">Members</a></li>
         </ul>
-        <button id="musicbutton" style="visibility: hidden; font-size: 50px;">⏸️</button>
+        <img src="loading.gif" id="musicbutton" style="background-color: transparent;" width="50px" height="50px">
         <div id="membercontainer"></div>
     </body>
 </html>
