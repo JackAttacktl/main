@@ -57,18 +57,4 @@ async function load_members() {
             }
         });
     }
-    document.getElementById("musicbutton").addEventListener("click", function() {
-        if (canplay) {
-            if (paused) {
-                music.play();
-                paused = false;
-                document.getElementById("musicbutton").src = "pause.png";
-            }
-            else {
-                music.pause();
-                paused = true;
-                document.getElementById("musicbutton").src = "play.png";
-            }
-        }
-    });
 }
