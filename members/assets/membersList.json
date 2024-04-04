@@ -1,0 +1,23 @@
+{
+    "jaxon": {
+        "display_name": "Jaxon",
+        "username": "[Pending]",
+        "avatar_file_name": "jaxon.png",
+        "color": "blue",
+        "description": "Don't tell rockstar I stole their beta release"
+    },
+    "wizard": {
+        "display_name": "Wizard",
+        "username": "[Pending]",
+        "avatar_file_name": "wizard.png",
+        "color": "red",
+        "description": "★ :EspressoHappy: Hai I'm DeceasedWizard (Wiz)!"
+    },
+    "mercedeez": {
+        "display_name": "Mercedeez",
+        "username": "[Pending]",
+        "avatar_file_name": "mercedeez.png",
+        "color": "pink",
+        "description": "I'M THE TWINKLE"
+    }
+}
