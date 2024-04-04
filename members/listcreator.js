@@ -14,6 +14,7 @@ function load_members() {
             a.href = username;
             a.style = "border-color: " + data.color + "; box-shadow: 0px 0px 20px 1px " + data.color + "; z-index: 0"
             const img = document.createElement("img");
+            img.style = "width:128px;height:128px;";
             img.src = "assets/" + data.avatar_file_name;
             const div = document.createElement("div");
             const h1 = document.createElement("h1");
