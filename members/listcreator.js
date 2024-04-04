@@ -8,7 +8,7 @@ function load_members() {
             throw new Error ('HTTP Error')
         }
         const members = res.json();
-        console.log(members);
+        console.log(res.json);
         const membercontainer = document.getElementById("membercontainer");
         for (const [username, data] of Object.entries(members)) {
             const a = document.createElement("a");
