@@ -1,4 +1,4 @@
-function fetchJSONData(path) {
+async function fetchJSONData(path) {
     fetch(path)
         .then((res) => {
             if (!res.ok) {
@@ -14,8 +14,8 @@ function fetchJSONData(path) {
 const memberobjects = [];
 const zindexes = [];
 
-function load_members() {
-    const members = fetchJSONData("assets/membersList.json");
+async function load_members() {
+    const members = await fetchJSONData("assets/membersList.json");
     const membercontainer = document.getElementById("membercontainer");
     for (const [username, data] of Object.entries(members)) {
         const a = document.createElement("a");
