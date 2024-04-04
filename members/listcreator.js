@@ -59,4 +59,11 @@ async function load_members() {
     }
 }
 
-await load_members();
+(async () => {
+    try {
+        await load_members();
+    } catch (e) {
+        // Deal with the fact the chain failed
+    }
+    // `text` is not available here
+})();
