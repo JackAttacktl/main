@@ -58,3 +58,7 @@ async function load_members() {
         });
     }
 }
+
+document.body.onload = async function() {
+    await load_members();
+}
