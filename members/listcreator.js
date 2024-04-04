@@ -7,18 +7,15 @@ function fetchJSONData(path) {
             }
             return res.json();
         })
-        .then((data) => 
-              console.log(data))
         .catch((error) => 
                console.error("Unable to fetch data:", error));
 }
-
-const members = fetchJSONData("assets/membersList.json");
 
 const memberobjects = [];
 const zindexes = [];
 
 function load_members() {
+    const members = fetchJSONData("assets/membersList.json");
     const membercontainer = document.getElementById("membercontainer");
     for (const [username, data] of Object.entries(members)) {
         const a = document.createElement("a");
