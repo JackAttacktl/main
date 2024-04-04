@@ -1,21 +1,14 @@
-async function fetchJSONData(path) {
-    fetch(path)
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error
-                    (`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .catch((error) => 
-               console.error("Unable to fetch data:", error));
-}
-
 const memberobjects = [];
 const zindexes = [];
 
 function load_members() {
-    const members = fetchJSONData("assets/membersList.json").then(function() {
+    console.log("Start fetching..");
+    fetch("assets/membersList.json").then(function(res) {
+        if (!res.ok) {
+            throw new Error ('HTTP Error')
+        }
+        const members = res.json();
+        console.log("Done.");
         const membercontainer = document.getElementById("membercontainer");
         for (const [username, data] of Object.entries(members)) {
             const a = document.createElement("a");
