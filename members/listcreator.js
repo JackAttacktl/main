@@ -3,11 +3,9 @@ const zindexes = [];
 
 function load_members() {
     console.log("Start fetching..");
-    fetch("assets/membersList.json").then(function(res) {
-        if (!res.ok) {
-            throw new Error ('HTTP Error')
-        }
-        const members = res.json();
+    fetch("assets/membersList.json")
+        .then((response) => response.json())
+        .then(function(members) {
         console.log(members);
         const membercontainer = document.getElementById("membercontainer");
         for (const [username, data] of Object.entries(members)) {
